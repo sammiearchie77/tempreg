@@ -1,0 +1,113 @@
+:root {
+    --primary-color: #630000;
+    --secondary-color: #d8b6a4;
+    --tertiary-color: #eeebdd;
+    --text-color: #000000;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.button {
+    border-radius: 28px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#car-img-div {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/img/car-2.jpg');
+    filter: brightness(0.5);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
+#conversion-text {
+    position: absolute;
+    margin-left: 10vw;
+    margin-right: 20vw;
+    color: white;
+}
+
+#conversion-text h2 {
+    margin-bottom: 36px;
+}
+
+/*
+    It is recommended that this class should only be applied to a flexbox
+*/
+.custom-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-column-responsive {
+    display: flex;
+    flex-direction: row;
+}
+
+.custom-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.custom-row-responsive {
+    display: flex;
+    flex-direction: row;
+}
+
+.custom-card {
+    margin: 20vh 20vw;
+}
+
+.relative {
+    position: relative;
+}
+
+section, footer {
+    height: 90vh;
+}
+
+#section-hero {
+    background-image: url('img/car.svg');
+    position: relative;
+    height: 80vh;
+}
+
+#section-info {
+    padding: 10vh;
+    background-color: var(--secondary-color);
+}
+
+#section-sign-up h2 {
+    margin-bottom: 5vh;
+}
+
+.step {
+    margin: auto 40px;
+}
+
+.step > div {
+    background-color: var(--primary-color);
+    height: 9vh;
+    width: 10vw;
+    border-radius: 12px;
+}
+
+.step > div > h1 {
+    margin: auto;
+    position: absolute;
+    left: 34%;
+    bottom: 30%;
+    color: white;
+}
+

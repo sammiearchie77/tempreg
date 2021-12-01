@@ -1,19 +1,28 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const ejs = require('ejs');
 
 const app = express();
-app.use(bodyParser.urlencoded({extended: true}))
+
+var userObject;
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(express.static('static_files'));
+app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.send('Welcome to Tempreg')
+    res.render('home', {userName: 'Temitope'});
 });
 
 app.get('/register', (req, res) => {
-    res.send('Registration Page')
+    res.render('register', {});
 });
 
 app.post('/register', (req, res) => {
     console.log(req.body);
+    userObject = req.body;
+    res.render('result', req.body);
 });
 
 app.listen(3000, () => {
