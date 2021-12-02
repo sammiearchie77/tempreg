@@ -29,8 +29,9 @@
 #conversion-text {
     position: absolute;
     margin-left: 10vw;
-    margin-right: 20vw;
+    margin-right: 10vw;
     color: white;
+    text-align: center;
 }
 
 #conversion-text h2 {
@@ -69,23 +70,49 @@
     margin: 20vh 20vw;
 }
 
+footer {
+    height: 20vh;
+}
+
+.numbered-circle {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.numbered-circle h1 {
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
 .relative {
     position: relative;
 }
 
-section, footer {
+section {
     height: 90vh;
 }
 
-#section-hero {
+.section-hero {
     background-image: url('img/car.svg');
     position: relative;
     height: 80vh;
 }
 
-#section-info {
+.section-info {
     padding: 10vh;
     background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.section-info h2 {
+    margin-bottom: 30vh;
 }
 
 #section-sign-up h2 {
@@ -94,20 +121,12 @@ section, footer {
 
 .step {
     margin: auto 40px;
-}
-
-.step > div {
-    background-color: var(--primary-color);
-    height: 9vh;
-    width: 10vw;
-    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
 }
 
 .step > div > h1 {
     margin: auto;
-    position: absolute;
-    left: 34%;
-    bottom: 30%;
     color: white;
 }
 
