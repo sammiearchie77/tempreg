@@ -1,3 +1,6 @@
+/*
+    GENERAL STYLING
+*/
 :root {
     --primary-color: #630000;
     --secondary-color: #d8b6a4;
@@ -6,11 +9,43 @@
     --secondary-color-opacity: #80630000; 
 }
 
-* {
+*, ** {
     margin: 0;
     box-sizing: border-box;
 }
 
+/*
+    LAYOUTS
+*/
+/* It is recommended that this class should only be applied to a flexbox*/
+.custom-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-column-responsive {
+    display: flex;
+    flex-direction: row;
+}
+
+.custom-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.custom-row-responsive {
+    display: flex;
+    flex-direction: row;
+}
+
+/*
+    NORMAL STYLES
+*/
 .button {
     border-radius: 28px;
     padding-left: 100px;
@@ -39,40 +74,29 @@
     margin-bottom: 36px;
 }
 
-/*
-    It is recommended that this class should only be applied to a flexbox
-*/
-.custom-center {
-    justify-content: center;
-    align-items: center;
-}
 
-.custom-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.custom-column-responsive {
-    display: flex;
-    flex-direction: row;
-}
-
-.custom-row {
-    display: flex;
-    flex-direction: row;
-}
-
-.custom-row-responsive {
-    display: flex;
-    flex-direction: row;
-}
 
 .custom-card {
     margin: 20vh 20vw;
 }
 
+.dash {
+    height: 4px;
+    width: 5vw;
+    background-color: var(--text-color);
+    justify-self: center;
+    align-self: center;
+}
+
 footer {
-    height: 20vh;
+    height: 10vh;
+    color: var(--tertiary-color);
+}
+
+footer p {
+    text-align: center;
+    font-weight: 100;
+    font-size: 0.7em;
 }
 
 .numbered-circle {
@@ -138,5 +162,10 @@ section {
 .step > div > h1 {
     margin: auto;
     color: white;
+}
+
+.steps {
+    justify-content: center;
+    align-items: center;
 }
 
