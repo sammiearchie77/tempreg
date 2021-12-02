@@ -3,6 +3,7 @@
     --secondary-color: #d8b6a4;
     --tertiary-color: #eeebdd;
     --text-color: #000000;
+    --secondary-color-opacity: #80630000; 
 }
 
 * {
@@ -79,6 +80,10 @@ footer {
     width: 100px;
     border-radius: 50%;
     background-color: var(--primary-color);
+    box-shadow: 0px 10px 40px var(--secondary-color-opacity);
+    /*
+    TODO: Change the value of this color to something that fits better with the brand
+    */
 }
 
 .numbered-circle h1 {
@@ -123,6 +128,11 @@ section {
     margin: auto 40px;
     justify-content: center;
     align-items: center;
+}
+
+.step p {
+    font-weight: 500;
+    margin-top: 20px;
 }
 
 .step > div > h1 {
