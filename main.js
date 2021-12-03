@@ -22,7 +22,12 @@ app.get('/register', (req, res) => {
 app.post('/register', (req, res) => {
     console.log(req.body);
     userObject = req.body;
-    res.render('result', req.body);
+    res.redirect('/dashboard');
+});
+
+app.get('/dashboard', (req, res) => {
+    console.log({userObject});
+    res.render('dashboard', userObject);
 });
 
 app.listen(3000, () => {
