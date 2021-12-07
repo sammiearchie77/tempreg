@@ -70,6 +70,10 @@ body {
     position: absolute;
     margin-left: 10vw;
     margin-right: 10vw;
+    width: 80vw;
+    height: 40vh;
+    margin-top: 30vh;
+    margin-bottom: auto;
     color: white;
     text-align: center;
 }
@@ -84,7 +88,7 @@ body {
 
 .custom-navbar {
     height: 100vh;
-    width: 20vw;
+    width: 15vw;
 }
 
 .dash {
@@ -95,10 +99,11 @@ body {
     align-self: center;
 }
 
-#dashboard-nav {
-    border-style: solid;
-    border-width: 10px;
-    border-color: white;
+.dashboard-divider {
+    width: 92%;
+    height: 1px;
+    background-color: var(--secondary-color);
+    margin: 0 4%;
 }
 
 #dashboard-nav div {
@@ -111,19 +116,12 @@ body {
     border-radius: 14px;
     color: white;
     display: block;
+    width: 92%;
+    margin: 2% 4% 2% 4%;
 }
 
 .dashboard-nav-button:hover {
-    background-color: var(--secondary-color-opacity);
-}
-
-.dashboard-section {
-    border-top-style: solid;
-    border-top-color: var(--tertiary-color);
-    border-top-width: 0.5px;
-    border-bottom-style: solid;
-    border-bottom-color: var(--tertiary-color);
-    border-bottom-width: 0.5px;
+    background-color: var(--tertiary-color);
 }
 
 footer {

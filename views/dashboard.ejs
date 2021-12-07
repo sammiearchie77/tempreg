@@ -29,16 +29,26 @@
             <aside class="custom-navbar custom-column bg-dark">
                 <div class="dashboard-divider"></div>
                 <div class="dashboard-section">
-                    <button class="dashboard-nav-button btn btn-warning btn-lg">Dashboard</button>
-                    <button class="dashboard-nav-button">Dashboard</button>
-                    <button class="dashboard-nav-button">Dashboard</button>
+                    <button class="dashboard-nav-button btn btn-lg"><span class="h5">Dashboard</span></button>
+                    <button class="dashboard-nav-button btn btn-lg">Dashboard</button>
+                    <button class="dashboard-nav-button btn btn-lg">Dashboard</button>
                 </div>
+                <div class="dashboard-divider"></div>
                 <div>
                     <button></button>
                     <button></button>
                 </div>
             </aside>
-            <main></main>
+            <main id="dashboard-main">
+                <center>
+                    <div class="col-md-12">
+                        <form action="/search">
+                            <input type="text" placeholder="Search vehicles" class="form-control">
+                        </form>
+                    </div>
+                    <div id="custom-row" class="custom-row-responsive"></div>
+                </center>
+            </main>
         </section>
     </body>
 </html>
