@@ -4,7 +4,7 @@
 :root {
     --header-height: 3rem;
     --nav-width: 68px;
-    --first-color: #4723D9;
+    --first-color: #100a2b;
     --first-color-light: #AFA5D9;
     --white-color: #F7F6FB;
     --body-font: 'Nunito', sans-serif;
@@ -146,6 +146,9 @@ a {
 
 .height-100 {
     height: 100vh
+}
+.card {
+    background-color: #100a2b;
 }
 
 @media screen and (min-width: 768px) {
