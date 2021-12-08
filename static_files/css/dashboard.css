@@ -150,6 +150,10 @@ a {
 .card {
     background-color: #100a2b;
 }
+.card:hover {
+    box-shadow: 2px 2px 4px 4px rgb(51, 55, 100);
+    cursor: pointer;
+}
 
 @media screen and (min-width: 768px) {
     body {
