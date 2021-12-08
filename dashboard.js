@@ -36,3 +36,10 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
 // Your code to run since DOM is loaded and ready
 });
+
+
+// dark mode 
+const darkMode = () => {
+    let element = document.body;
+    element.classList.toggle("dark-mode")
+}

@@ -4,12 +4,13 @@
 :root {
     --header-height: 3rem;
     --nav-width: 68px;
-    --first-color: #100a2b;
+    --first-color: #630000;
     --first-color-light: #AFA5D9;
     --white-color: #F7F6FB;
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;
-    --z-fixed: 100
+    --z-fixed: 100;
+    --dark-color: #000000;
 }
 
 *,
@@ -148,12 +149,16 @@ a {
     height: 100vh
 }
 .card {
-    background-color: #100a2b;
+    background-color: var(--first-color);
 }
 .card:hover {
-    box-shadow: 2px 2px 4px 4px rgb(51, 55, 100);
+    box-shadow: 2px 2px 4px 4px rgb(100, 51, 52);
     cursor: pointer;
 }
+.dark-mode {
+    background-color: var(--dark-color);
+    color: white;
+  }
 
 @media screen and (min-width: 768px) {
     body {
