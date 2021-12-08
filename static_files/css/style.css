@@ -80,10 +80,13 @@ body {
 
 #conversion-text h2 {
     margin-bottom: 36px;
+    height: 200vh;
 }
 
 .custom-card {
     margin: 20vh 20vw;
+    height: auto;
+    padding-bottom: 20px;
 }
 
 .custom-navbar {
@@ -135,6 +138,11 @@ footer p {
     font-size: 0.7em;
 }
 
+#form-title {
+    margin-left: 16px;
+    margin-top: 20px;
+}
+
 .numbered-circle {
     height: 100px;
     width: 100px;
@@ -142,7 +150,7 @@ footer p {
     background-color: var(--primary-color);
     box-shadow: 0px 10px 40px var(--secondary-color-opacity);
     /*
-    TODO: Change the value of this color to something that fits better with the brand
+    TODO: Change the value of the background color to something that fits better with the brand
     */
 }
 
