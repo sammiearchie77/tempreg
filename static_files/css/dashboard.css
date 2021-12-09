@@ -10,7 +10,7 @@
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;
     --z-fixed: 100;
-    --dark-color: #000000;
+    --dark-color: #00040f;
 }
 
 *,
@@ -59,7 +59,8 @@ a {
     display: flex;
     justify-content: center;
     border-radius: 50%;
-    overflow: hidden
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .header_img img {
