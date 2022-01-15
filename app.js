@@ -1,9 +1,10 @@
 const express = require('express');
-const expressLayouts = require('express-ejs-layouts')
+const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
-const flash = require('connect-flash')
-const session = require('express-session')
-const passport = require('passport')
+const session = require('express-session');
+const passport = require('passport');
+const flash = require('express-flash');
+const path = require('path')
 
 
 const app = express();
@@ -16,13 +17,14 @@ require('./config/passport')(passport);
 const db = require('./config/keys').mongoUrl;
 
 // connect to mongo db 
-mongoose.connect(db, { useNewUrlParser: true})
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDb Connected...'))
     .catch(err => console.log(err));
 
 // Middleware 
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
+app.use('/static', express.static(path.join(__dirname, 'public/static')))
 
 // bodyParser 
 app.use(express.urlencoded({
@@ -34,28 +36,27 @@ app.use(session({
     secret: 'secret',
     resave: true,
     saveUninitialized: true,
-  }))
+}))
 
-  app.use(passport.initialize());
-  app.use(passport.session());
+//   passport middleware 
+app.use(passport.initialize());
+app.use(passport.session());
 
+// connect flash 
+app.use(flash());
 
-//   connect flash 
-app.use(flash)
-
-// global var 
-app.use((req,res, next) => {
+// global varables 
+app.use((req, res, next) => {
     res.locals.success_message = req.flash('success_message')
-    res.locals.error_message = req.flash('error_message')
-    res.locals.error = req.flash('error')
-    next();
+    res.locals.errors_message = req.flash('errors_message');
+    next()
 })
+
+
 
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
-// app.use('/users', require('./routes/users'))
 
-
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server listening at port ${PORT}`));

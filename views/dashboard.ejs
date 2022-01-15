@@ -1,3 +1,116 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= name %></p>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<div class="wrapper d-flex align-items-stretch">
+    <%- include('./partials/sideNav')  %> 
+    <div id="content" class="p-4 p-md-5 pt-5">
+        <h1 class="mt-4">Dashboard</h1>
+        <h4 class="lead mb-3">Welcome <%= user.name %>
+        </h4>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="card db__card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg">
+                                    <img src="/static/img/sam.bg.svg" alt="profile image" srcset="" width="80%">
+                                </div>
+                                <div class="col-lg">
+                                    <p class="lead mx-3">
+                                        <%= user.name %>
+                                    </p>
+                                    <p class="lead mx-3">
+                                        <%= user.email %>
+                                    </p>
+                                    <p class="lead mx-3">08103155891</p>
+                                    <div class="row">
+                                        <div class="col-lg d-flex ">
+                                            <p class="lead mx-3">Male</p>
+                                            <p class="lead mx-3">45</p>
+                                            <p class="lead mx-3">Lagos</p>
+                                        </div>
+                                        <div class="btn btn-outline-success rounded">view car info</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card text-white mb-3">
+                    <div class="card-body">
+                        <h4>Personal Recommendations</h4>
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-lg">
+                                    <h6 class="text-secondary">High stress level</h6>
+                                    <p class="text-secondary">Personal pschological </p>
+                                </div>
+                                <div class="col-lg">
+                                    <h6 class="text-secondary">Afterschool programs </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-lg">
+                                    <h6 class="text-secondary">Anxiety disorder</h6>
+                                </div>
+                                <div class="col-lg">
+                                    <p class="text-secondary">Mild depressive episode</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Medical history</h4>
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-lg">
+                                    <p class="text-secondary">High stress level</p>
+                                </div>
+                                <div class="col-lg">
+                                    <p class="text-secondary">High stress level</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-lg">
+                                    <p class="text-secondary">High stress level</p>
+                                </div>
+                                <div class="col-lg">
+                                    <p class="text-secondary">High stress level</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>   
+        <div class="row">
+            <div class="col-5">
+                <div class="card h-75">
+                    <div class="card-title">
+                        <h5 class="mx-3">Areas of Interest</h5>
+                        <ul class="list-style-none">
+                            <li>
+                                Sport
+                            </li>
+                            <li>
+                                Reading
+                            </li>
+                            <li>
+                                wrestling
+                            </li>
+                            <li>
+                                polictics
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-5"></div>
+        </div>     
+    </div>
