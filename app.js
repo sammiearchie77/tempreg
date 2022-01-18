@@ -5,6 +5,7 @@ const session = require('express-session');
 const passport = require('passport');
 const flash = require('express-flash');
 const path = require('path')
+const bodyParser = require('body-parser')
 
 
 const app = express();
@@ -27,8 +28,8 @@ app.set('view engine', 'ejs');
 app.use('/static', express.static(path.join(__dirname, 'public/static')))
 
 // bodyParser 
-app.use(express.urlencoded({
-    extended: false
+app.use(bodyParser.urlencoded({
+    extended: true
 }))
 
 // express session 
@@ -57,6 +58,6 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, console.log(`Server listening at port ${PORT}`));

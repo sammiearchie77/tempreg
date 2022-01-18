@@ -1,17 +1,21 @@
 const mongoose = require('mongoose');
 
-// create a schema for the database 
-const UserSchema = new mongoose.Schema({
+const vehicleSchema = new mongoose.Schema({
+    // vehicle profile data model 
     name: {
         type: String,
         required: true
     },
-    email: {
+    model: {
         type: String,
         required: true
     },
-    password: {
+    year: {
         type: String,
+        required: true
+    },
+    vin: {
+        type: String, 
         required: true
     },
     date: {
@@ -20,6 +24,7 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
-const User = mongoose.model('User', UserSchema);
 
-module.exports = User;
+const Vehicle = mongoose.model('Vehicle', vehicleSchema);
+
+module.exports = Vehicle;

@@ -1,69 +1,100 @@
 <div class="wrapper d-flex align-items-stretch">
-    <%- include('./partials/sideNav')  %>
+  <%- include('./partials/sideNav') %>
     <div id="content" class="p-4 p-md-5 pt-5">
-        <h1 class="mt-4">Dashboard</h1>
-        <h4 class="lead mb-3">Welcome <%= user.name %>
-        </h4>    
-        <div class="">
-          <div class="row mt-5">
-            <div class="col-md-8 m-auto">
-              <div class="card card-body">
-                <h1 class="text-center mb-3">
-                  <i class="fas fa-user-plus"></i> Vehicle Details
-                </h1>
-                <form action="/users/register" method="POST">
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input
-                      type="name"
-                      id="name"
-                      name="name"
-                      class="form-control"
-                      placeholder="Enter Name"
-                      value="<%# = typeof name != 'undefined' ? name : '' %>"
-                    />
+      <h1 class="mt-4">Vehicle Profile</h1>
+      <h4 class="lead mb-3">Welcome <%= user.name %>
+      </h4>
+      <div class="card">
+        <h1 class="text-center mb-2">
+          <i class="fas fa-car"></i> Vehicle Info
+        </h1>
+        <div class="row mt-5">
+          <div class="col-md-4">
+            <div class="user__image mx-4 mt-4">
+              <img class=" rounded" src="../static/img/benz.jpg" alt="user-image" srcset="" width="100%">
+              <h3 class="text-center mb-1">Vehicle Image</h3>
+            </div>
+          </div>
+          <div class="col-md-8 m-auto">
+            <div class="card-body">
+              <form action="/vehicle" method="POST">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for="name">Vehicle name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name"
+                      value="Mercedes Benz"/>
                   </div>
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      class="form-control"
-                      placeholder="Enter Email"
-                      value="<%# typeof email != 'undefined' ? email : '' %>"
-                    />
+                  <div class="col-md-6 form-group">
+                    <label for="model">Vehicle Model</label>
+                    <input type="text" id="model" name="model" class="form-control" value="AMG 64"/>
                   </div>
-                  <div class="form-group">
-                    <label for="password">Password</label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      class="form-control"
-                      placeholder="Create Password"
-                      value="<%# typeof password != 'undefined' ? password : '' %>"
-                    />
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="year">Production Year</label>
+                      <input type="text" id="" name="year" class="form-control" placeholder="Enter Email"
+                        value="2022"/>
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label for="password2">Confirm Password</label>
-                    <input
-                      type="password"
-                      id="password2"
-                      name="password2"
-                      class="form-control"
-                      placeholder="Confirm Password"
-                      value="<%# typeof password2 != 'undefined' ? password2 : '' %>"
-                    />
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="vin">VIN No</label>
+                      <input type="text" id="vin" name="vin" class="form-control" placeholder="Enter Email" value="1C4AJWAG6DL591729"
+                      />
+                    </div>
                   </div>
-                  <button type="submit" class="btn btn-primary mt-3 w-25 font-weight-800">
-                    Edit Profile
+                </div>
+                <!-- <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="manufacturedin">Manufactured in</label>
+                      <input type="text" id="manufacturedin" name="manufacturedin" class="form-control" value="Germany"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="chasis">Chasis Number</label>
+                      <input type="text" id="chasis" name="chasis" class="form-control" placeholder="Enter Email" value="544004"
+                      />
+                    </div>
+                  </div>
+                </div> -->
+                <div class="d-flex justify-content-between">
+                  <button type="submit" class="btn btn-primary mt-3 w-25 font-weight-bolder">
+                  Save Car Info
                   </button>
-                </form>
-                <!-- <p class="lead mt-4">Have An Account? <a class="text-decoration-none" href="/users/login">Login</a></p> -->
-              </div>
+                </div>
+                <div class="d-flex justify-content-center mt-2">
+                  <!-- <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="#">&laquo;</a>
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">4</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">5</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">&raquo;</a>
+                    </li>
+                  </ul>
+                </div> -->
+              </form>
             </div>
           </div>
         </div>
+      </div>
     </div>
-  </div>
+</div>

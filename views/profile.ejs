@@ -1,69 +1,76 @@
 <div class="wrapper d-flex align-items-stretch">
-  <%- include('./partials/sideNav')  %>
-  <div id="content" class="p-4 p-md-5 pt-5">
-      <h1 class="mt-4">Dashboard</h1>
+  <%- include('./partials/sideNav') %>
+    <div id="content" class="p-4 p-md-5 pt-5">
+      <h1 class="mt-4">User Profile</h1>
       <h4 class="lead mb-3">Welcome <%= user.name %>
-      </h4>    
-      <div class="">
-        <div class="row mt-5">
+      </h4>
+      <div class="card">
+        <h1 class="text-center m-1">
+          <i class="fas fa-user"></i> Profile
+        </h1>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="user__image mx-4 mt-4">
+              <img class="mt-2 rounded" id="output" width="100%"/>
+              <!-- <img src="../static/img/sam.bg.svg" alt="user-image" srcset=""> -->
+              <input type="file" accept="image/*" onchange="loadFile(event)">
+              <h3 class="mx-3">Vehicle Owner</h3>
+            </div>
+          </div>
           <div class="col-md-8 m-auto">
-            <div class="card card-body">
-              <h1 class="text-center mb-3">
-                <i class="fas fa-user-plus"></i> Profile
-              </h1>
-              <form action="/users/register" method="POST">
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input
-                    type="name"
-                    id="name"
-                    name="name"
-                    class="form-control"
-                    placeholder="Enter Name"
-                    value="<%=user.name %>"
-                  />
+            <div class="card-body">
+              <form action="/profile" method="POST">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for="firstname">First name</label>
+                    <input type="firstname" id="firstname" name="firstname" class="form-control" placeholder="Enter Name"
+                      value="Samuel"/>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label for="lastname">last name</label>
+                    <input type="lastname" id="lastname" name="lastname" class="form-control" value="Archibong"/>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    class="form-control"
-                    placeholder="Enter Email"
-                    value="<%=user.email %>"
-                  />
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email"
+                        value=""/>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="contact">Contact</label>
+                      <input type="contact" id="contact" name="contact" class="form-control" value="08103155891"/>
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    class="form-control"
-                    placeholder="Create Password"
-                    value="<%# typeof password != 'undefined' ? password : '' %>"
-                  />
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="address">Address</label>
+                      <input type="text" id="address" name="address" class="form-control" value="House 33, Tombia street"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="id">ID No</label>
+                      <input type="text" id="id" name="id" class="form-control" placeholder="Enter Email" value="0000001"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="password2">Confirm Password</label>
-                  <input
-                    type="password"
-                    id="password2"
-                    name="password2"
-                    class="form-control"
-                    placeholder="Confirm Password"
-                    value="<%# typeof password2 != 'undefined' ? password2 : '' %>"
-                  />
+                <div class="">
+                  <button type="submit" class="btn btn-primary mt-3 w-25 font-weight-bolder">
+                  Save Changes
+                  </button>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3 w-25 font-weight-800">
-                  Edit Profile
-                </button>
               </form>
-              <!-- <p class="lead mt-4">Have An Account? <a class="text-decoration-none" href="/users/login">Login</a></p> -->
             </div>
           </div>
         </div>
       </div>
-  </div>
+    </div>
 </div>

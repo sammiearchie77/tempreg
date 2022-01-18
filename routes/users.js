@@ -64,7 +64,7 @@ router.post('/register', (req, res) => {
               .then(user => {
                 req.flash(
                   'success_message',
-                  'You are now registered and can log in'
+                  'You are now registered and can log in' + user
                 );
                 res.redirect('./login');
               })
