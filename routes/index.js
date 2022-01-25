@@ -1,12 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
-const Profile = require('../models/Profile');
-const Vehicle = require('../models/Vehicle');
+const Profile = require('../models/Admin');
 
 
 // Welcome Page
 router.get('/', forwardAuthenticated, (req, res) => res.render('welcome'));
+
+router.get('/info/', forwardAuthenticated, (req, res) => {
+  res.render('search')
+})
+router.post('/info/', forwardAuthenticated, (req, res) => {
+  const userName = req.body.search;
+  console.log(userName);
+  const userResult = Profile.find({
+      fullname: userName
+    }, function(err, person){
+      if(err) return handleError(err);
+      console.log(person);
+      res.redirect('/info/')
+    })
+    
+})
 
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) =>
@@ -41,33 +56,7 @@ router.post('/profile', async (req, res) => {
     })
 })
 
-// get vehicle request 
-router.get('/vehicle', ensureAuthenticated, (req, res) => {
-  res.render('vehicle', {
-    user: req.user
-  })
-});
 
-// post vehicle req 
-router.post('/vehicle', ensureAuthenticated, (req, res) => {
-  const vehicle = new Vehicle({
-    name: req.body.name,
-    model: req.body.model,
-    year: req.body.year,
-    vin: req.body.vin
-  });
-    vehicle.save()
-    .then(data => {
-      req.flash('success_message',
-          'Profile status updated and saved');
-      res.status(200).render('dashboard', {
-        user: req.user
-      })
-    })
-    .catch(err => {
-      res.json({ message: err });
-    })
-});
 
 router.get('/settings', ensureAuthenticated, (req, res) =>
   res.render('settings', {

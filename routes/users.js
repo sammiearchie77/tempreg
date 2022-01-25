@@ -14,10 +14,10 @@ router.get('/register', forwardAuthenticated, (req, res) => res.render('signReg'
 
 // Register
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
-  let errors = [];
+  const { firstname, lastname, email, contact, password, password2,carMake, model, year, vin, address, location } = req.body;
+  let errors = []; 
 
-  if (!name || !email || !password || !password2) {
+  if (!firstname || !lastname || !email || !contact || !password || !password2 || !carMake || !model || !year || !vin || !address || !location ) {
     errors.push({ message: 'Please enter all fields' });
   }
 
@@ -32,10 +32,12 @@ router.post('/register', (req, res) => {
   if (errors.length > 0) {
     res.render('signReg', {
       errors,
-      name,
+      firstname,
+      lastname,
       email,
       password,
-      password2
+      password2,
+
     });
   } else {
     User.findOne({ email: email }).then(user => {
@@ -43,16 +45,32 @@ router.post('/register', (req, res) => {
         errors.push({ message: 'Email already exists' });
         res.render('signReg', {
           errors,
-          name,
+          firstname,
+          lastname,
           email,
+          contact,
           password,
-          password2
+          password2,
+          carMake,
+          model,
+          year,
+          vin,
+          address,
+          location
         });
       } else {
         const newUser = new User({
-          name,
+          firstname,
+          lastname,
           email,
-          password
+          contact,
+          password,
+          carMake,
+          model,
+          year,
+          vin,
+          address,
+          location
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -64,7 +82,7 @@ router.post('/register', (req, res) => {
               .then(user => {
                 req.flash(
                   'success_message',
-                  'You are now registered and can log in' + user
+                  'You are now registered and can log in'
                 );
                 res.redirect('./login');
               })

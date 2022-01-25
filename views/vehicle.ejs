@@ -11,7 +11,9 @@
         <div class="row mt-5">
           <div class="col-md-4">
             <div class="user__image mx-4 mt-4">
-              <img class=" rounded" src="../static/img/benz.jpg" alt="user-image" srcset="" width="100%">
+              <img class="mt-2 rounded" id="output" width="100%"/>
+              <!-- <img class=" rounded" src="../static/img/benz.jpg" alt="user-image" srcset="" width="100%"> -->
+              <input class="mt-1" type="file" accept="image/*" onchange="loadFile(event)">
               <h3 class="text-center mb-1">Vehicle Image</h3>
             </div>
           </div>
@@ -45,52 +47,11 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="manufacturedin">Manufactured in</label>
-                      <input type="text" id="manufacturedin" name="manufacturedin" class="form-control" value="Germany"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="chasis">Chasis Number</label>
-                      <input type="text" id="chasis" name="chasis" class="form-control" placeholder="Enter Email" value="544004"
-                      />
-                    </div>
-                  </div>
-                </div> -->
                 <div class="d-flex justify-content-between">
                   <button type="submit" class="btn btn-primary mt-3 w-25 font-weight-bolder">
                   Save Car Info
                   </button>
                 </div>
-                <div class="d-flex justify-content-center mt-2">
-                  <!-- <ul class="pagination">
-                    <li class="page-item">
-                      <a class="page-link" href="#">&laquo;</a>
-                    </li>
-                    <li class="page-item active">
-                      <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">&raquo;</a>
-                    </li>
-                  </ul>
-                </div> -->
               </form>
             </div>
           </div>

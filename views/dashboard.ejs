@@ -15,19 +15,30 @@
                                     </div>
                                     <div class="col-lg">
                                         <p class="lead mx-3"> Name: 
-                                            <%= user.name %>
+                                            <%= user.firstname %> 
+                                            <%= user.lastname %>
                                         </p>
                                         <p class="lead mx-3"> Email:
                                             <%= user.email %>
                                         </p>
-                                        <p class="lead mx-3">08103155891</p>
+                                        <p class="lead mx-3">Phone: 
+                                            <%= user.contact %>
+                                        </p>
                                         <div class="row">
                                             <div class="">
-                                                <p class="lead mx-3">ID number </p>
-                                                <p class="lead mx-3">VIN</p>
-                                                <p class="lead mx-3">Vehicle Make</p> 
-                                                <p class="lead mx-3">Year of production</p>
-                                                <p class="lead mx-3">Location</p>
+                                                <p class="lead mx-3">ID number:  </p>
+                                                <p class="lead mx-3">Vin: 
+                                                    <%= user.vin %>
+                                                </p>
+                                                <p class="lead mx-3">Make: 
+                                                    <%= user.carMake %>
+                                                </p> 
+                                                <p class="lead mx-3"> Year: 
+                                                    <%= user.year %>
+                                                </p>
+                                                <p class="lead mx-3"> Location: 
+                                                    <%= user.location %>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
