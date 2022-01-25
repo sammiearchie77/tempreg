@@ -6,7 +6,6 @@ const passport = require('passport');
 const flash = require('express-flash');
 const path = require('path')
 const bodyParser = require('body-parser')
-const formidableMiddleware = require('express-formidable')
 const bcrypt = require('bcryptjs')
 // admin bro 
 const AdminBro = require('admin-bro');
@@ -82,7 +81,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 // formidableMiddleware 
-app.use(formidableMiddleware());
+// app.use(formidableMiddleware());
 
 // express session 
 app.use(session({
