@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 // create a schema for the database 
 const UserSchema = new mongoose.Schema({
+    ownerId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+      },
     firstname: {
         type: String,
         required: true

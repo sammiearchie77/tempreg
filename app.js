@@ -8,54 +8,42 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcryptjs')
 // admin bro 
-const AdminBro = require('admin-bro');
-const AdminBroExpressjs = require('admin-bro-expressjs')
-const AdminBroMongoose = require('admin-bro-mongoose')
+const AdminJS = require('adminjs')
+const AdminJSExpress = require('@adminjs/express')
+const AdminJSMongoose = require('@adminjs/mongoose')
 
-AdminBro.registerAdapter(AdminBroMongoose)
+AdminJS.registerAdapter(AdminJSMongoose)
+
+
 const User = require('./models/User')
 const Admin = require('./models/Admin');
 
 const app = express();
 
 
+const adminJs = new AdminJS({
+  resources: [User, {
+    resource: Admin,
+    options: {
+      
+    },
+  }],
+  rootPath: '/admin',
+})
 
-
-// admin config 
-const adminBro = new AdminBro({
-    resources: [{
-        resource: Admin,
-        options: {
-          properties: {
-            encryptedPassword: {
-              isVisible: false,
-            },
-            password: {
-              type: 'string',
-              isVisible: {
-                list: false, edit: true, filter: false, show: false,
-              },
-            },
-          },
-          actions: {
-            new: {
-              before: async (request) => {
-                if(request.payload.password) {
-                  request.payload = {
-                    ...request.payload,
-                    encryptedPassword: await bcrypt.hash(request.payload.password, 10),
-                    password: undefined,
-                  }
-                }
-                return request
-              },
-            }
-          }
-        }
-      }],
-    rootPath: '/admin',
-  })
-  
+const adminRouter = AdminJSExpress.buildAuthenticatedRouter(adminJs, {
+  authenticate: async (email, password) => {
+    const user = await User.findOne({ email })
+    if (user) {
+      const matched = await bcrypt.compare(password, user.password)
+      if (matched) {
+        return user
+      }
+    }
+    return false
+  },
+  cookiePassword: 'some-secret-password-used-to-secure-cookie',
+})
 
 // passport config 
 require('./config/passport')(passport);
@@ -75,13 +63,14 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 app.use('/static', express.static(path.join(__dirname, 'public/static')))
 
-// bodyParser 
-app.use(bodyParser.urlencoded({
-    extended: true
-}))
+// admin js 
+app.use(adminJs.options.rootPath, adminRouter)
 
-// formidableMiddleware 
-// app.use(formidableMiddleware());
+// bodyParser 
+app.use(bodyParser.json())
+app.use(express.urlencoded({
+  extended: true
+}));
 
 // express session 
 app.use(session({
@@ -89,44 +78,21 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
 }))
-
 //   passport middleware 
 app.use(passport.initialize());
 app.use(passport.session());
-
 // connect flash 
 app.use(flash());
-
 // global varables 
 app.use((req, res, next) => {
     res.locals.success_message = req.flash('success_message')
     res.locals.errors_message = req.flash('errors_message');
     next()
 })
-
-
-
-
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
-const AdminRouter = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
-    authenticate: async (email, password) => {
-        const user = await Admin.findOne({ email })
-        if (user) {
-            const matched = await bcrypt.compare(password, user.encryptedPassword)
-            if(matched){
-                return user
-            }
-        }
-        return false
-    },
-    cookiePassword: 'some-secret-password-used-to-secure-cookie',
-})
 
-
-app.use(adminBro.options.rootPath, AdminRouter)
 
 const PORT = process.env.PORT || 3000;
-
 
 app.listen(PORT, console.log(`Server listening at port ${PORT}`));
