@@ -6,36 +6,59 @@ const passport = require('passport');
 const flash = require('express-flash');
 const path = require('path')
 const bodyParser = require('body-parser')
-const bcrypt = require('bcryptjs')
 // admin bro 
 const AdminJS = require('adminjs')
 const AdminJSExpress = require('@adminjs/express')
 const AdminJSMongoose = require('@adminjs/mongoose')
-
+const bcrypt = require('bcryptjs')
 AdminJS.registerAdapter(AdminJSMongoose)
 
 
 const User = require('./models/User')
-const Admin = require('./models/Admin');
 
 const app = express();
 
 
 const adminJs = new AdminJS({
-  resources: [User, {
-    resource: Admin,
+  resources: [{
+    resource: User,
     options: {
-      
-    },
+      properties: {
+        encryptedPassword: {
+          isVisible: false,
+        },
+        password: {
+          type: 'string',
+          isVisible: {
+            list: false, edit: true, filter: false, show: false,
+          },
+        },
+      },
+      actions: {
+        new: {
+          before: async (request) => {
+            if(request.payload.password) {
+              request.payload = {
+                ...request.payload,
+                encryptedPassword: await bcrypt.hash(request.payload.password, 10),
+                password: undefined,
+              }
+            }
+            return request
+          },
+        }
+      }
+    }
   }],
   rootPath: '/admin',
 })
 
+// Build and use a router which will handle all AdminJS routes
 const adminRouter = AdminJSExpress.buildAuthenticatedRouter(adminJs, {
   authenticate: async (email, password) => {
     const user = await User.findOne({ email })
     if (user) {
-      const matched = await bcrypt.compare(password, user.password)
+      const matched = await bcrypt.compare(password, user.encryptedPassword)
       if (matched) {
         return user
       }
