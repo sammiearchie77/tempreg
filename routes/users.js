@@ -7,10 +7,10 @@ const User = require('../models/User');
 const { forwardAuthenticated } = require('../config/auth');
 
 // Login Page
-router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
+router.get('/login', forwardAuthenticated, (req, res) => res.render('login', { title: 'Tempreg | login'}));
 
 // Register Page
-router.get('/register', forwardAuthenticated, (req, res) => res.render('signReg'));
+router.get('/register', forwardAuthenticated, (req, res) => res.render('signReg', { title: 'Tempreg | Register'}));
 
 // Register
 router.post('/register', (req, res) => {

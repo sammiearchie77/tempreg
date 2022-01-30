@@ -4,7 +4,7 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 
 // Welcome Page
-router.get('/', forwardAuthenticated, (req, res) => res.render('home'));
+router.get('/', forwardAuthenticated, (req, res) => res.render('home', { title: 'Tempreg | Home of Vehicle Tracking'}));
 
 router.get('/info/', forwardAuthenticated, (req, res) => {
   res.render('search')
@@ -25,6 +25,7 @@ router.post('/info/', forwardAuthenticated, (req, res) => {
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) =>
   res.render('dashboard', {
+    title: 'Tempreg | Dashboard',
     user: req.user
   })
 );
