@@ -54,19 +54,7 @@ const adminJs = new AdminJS({
 })
 
 // Build and use a router which will handle all AdminJS routes
-const adminRouter = AdminJSExpress.buildAuthenticatedRouter(adminJs, {
-  authenticate: async (email, password) => {
-    const user = await User.findOne({ email })
-    if (user) {
-      const matched = await bcrypt.compare(password, user.encryptedPassword)
-      if (matched) {
-        return user
-      }
-    }
-    return false
-  },
-  cookiePassword: 'some-secret-password-used-to-secure-cookie',
-})
+const adminRouter = AdminJSExpress.buildRouter(adminJs)
 
 // passport config 
 require('./config/passport')(passport);
